@@ -1,7 +1,5 @@
 # Dependencies
 node_modules/
-package-lock.json
-yarn.lock
 
 # Environment variables
 .env
@@ -56,3 +54,11 @@ Thumbs.db
 
 # Database
 *.sqlite
+
+# Temporary files
+tmp/
+temp/
+
+# Build output
+dist/
+build/
