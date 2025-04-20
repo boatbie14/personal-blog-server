@@ -1,5 +1,6 @@
 import express from "express";
 import db from "../utils/db.mjs";
+import { validatePostData } from "../middlewares/validatePost.js";
 
 const postRouter = express.Router();
 
@@ -126,7 +127,7 @@ postRouter.get("/:postId", async (req, res) => {
 });
 
 // Create a new post
-postRouter.post("/", async (req, res) => {
+postRouter.post("/", validatePostData, async (req, res) => {
   try {
     const { title, image, category_id, description, content, status_id } = req.body;
 
@@ -160,7 +161,7 @@ postRouter.post("/", async (req, res) => {
 });
 
 // Update Post
-postRouter.put("/:postId", async (req, res) => {
+postRouter.put("/:postId", validatePostData, async (req, res) => {
   try {
     const { postId } = req.params;
     const { title, image, category_id, description, content, status_id } = req.body;
