@@ -1,14 +1,17 @@
 import express from "express";
-import bodyParser from "body-parser";
 import cors from "cors";
+import postRouter from "./routes/postsRouter.mjs";
 
 const app = express();
 const port = process.env.PORT || 4001;
 
 // Middleware
 app.use(cors());
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
+// Routes
+app.use("/posts", postRouter);
 
 // Get profile data
 app.get("/profiles", (req, res) => {
