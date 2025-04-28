@@ -1,6 +1,8 @@
 import express from "express";
 import cors from "cors";
 import postRouter from "./routes/postsRouter.mjs";
+import categoryRouter from "./routes/categoryRouter.mjs";
+import authorRouter from "./routes/authorRouter.mjs";
 
 const app = express();
 const port = process.env.PORT || 4001;
@@ -12,6 +14,8 @@ app.use(express.urlencoded({ extended: true }));
 
 // Routes
 app.use("/posts", postRouter);
+app.use("/category", categoryRouter);
+app.use("/author", authorRouter);
 
 // Get profile data
 app.get("/profiles", (req, res) => {
